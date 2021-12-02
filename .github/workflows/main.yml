@@ -33,9 +33,7 @@ jobs:
           haxelib install hxcpp > nul
           haxelib install lime
           haxelib install openfl
-          haxelib --never install flixel
-          haxelib run lime setup flixel
-          haxelib run lime setup
+          haxelib --never install flixel 
           haxelib install flixel-tools
           haxelib install flixel-ui
           haxelib install flixel-addons
@@ -44,10 +42,16 @@ jobs:
           haxelib install hxjsonast
           haxelib install linc_luajit
           haxelib install hscript
+          haxelib install acurate
+          haxelib run lime setup
+          haxelib run lime setup flixel
+          haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit.git
+          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-          haxelib git polymod https://github.com/larsiusprime/polymod
-          haxelib git extension-webm https://github.com/HaxeExtension/extension-webm
+          haxelib git polymod https://github.com/KadeDev/polymod
+          haxelib git extension-webm https://github.com/KadeDev/extension-webm
+          lime rebuild exstension-webm windows
           haxelib install hxcpp-debug-server
           haxelib list
         shell: cmd
