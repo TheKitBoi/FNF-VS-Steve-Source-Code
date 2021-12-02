@@ -33,32 +33,28 @@ jobs:
           haxelib install hxcpp > nul
           haxelib install lime 7.9.0
           haxelib install openfl
-          haxelib install flixel 
+          haxelib install flixel
           haxelib install flixel-tools
           haxelib install flixel-ui
-          haxelib install flixel-addons
-          haxelib install newgrounds
-          haxelib install tjson
-          haxelib install hxjsonast
-          haxelib install linc_luajit
           haxelib install hscript
-          haxelib install acurate
+          haxelib install flixel-addons
+          haxelib install actuate
           haxelib run lime setup
           haxelib run lime setup flixel
+          haxelib run flixel-tools setup
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit.git
           haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
-          haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+          haxelib git faxe https://github.com/uhrobots/faxe
           haxelib git polymod https://github.com/MasterEric/polymod.git
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git extension-webm https://github.com/KadeDev/extension-webm
           lime rebuild extension-webm windows
-          haxelib install hxcpp-debug-server
           haxelib list
         shell: cmd
-      - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
+      - name: Create APIStuff
+        run: echo "package;class APIStuff{public static var API:String = '';public static var EncKey:String = '';}" > source/APIStuff.hx
       - name: Compile
-        run: haxelib run lime build windows --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build windows
       - name: Publish Artifact
         uses: actions/upload-artifact@v2
         with:
